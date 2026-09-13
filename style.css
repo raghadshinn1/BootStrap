@@ -1,0 +1,255 @@
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+:root {
+  --primary: #6c5ce7; /*Branding main color*/
+  --secondary: #00cec9; /*Branding secondary color*/
+  --accent: #fd79a8; /*accent color is used for calls to action*/
+  --dark: #0d0d1a; /* Page background */
+  --light: #f4f4f8; /*Text on dark background */
+
+  --p-1: 8px;
+  --p-2: 16px; 
+  --p-3: 32px; 
+
+  /* Spacing scale for margin */
+  --m-1: 8px;
+  --m-2: 16px;
+  --m-3: 32px;
+}
+
+/* BASE */
+body {
+  font-family: "Segoe UI", arial, sans-serif;
+  background-color: var(--dark);
+  color: var(--light);
+  line-height: 1.6;
+}
+
+h2 {
+  color: var(--secondary);
+}
+
+
+/* Header */
+
+
+.logo {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.logo span {
+  color: var(--secondary) ;
+}
+
+
+
+.nav-link {
+  transition: color 0.2s; 
+}
+
+.nav-link:hover {
+  color: var(--accent) !important ;
+}
+
+.btn {
+  background-color: var(--accent);
+  
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: transform 0.2s;
+}
+.btn-primary {
+  --bs-btn-bg: var(--accent);
+  --bs-btn-border-color: var(--accent);
+  --bs-btn-hover-bg: var(--accent);
+  --bs-btn-hover-border-color: var(--accent);
+  --bs-btn-active-bg: var(--accent);
+  --bs-btn-active-border-color: var(--accent);
+}
+.btn:hover {
+  transform: scale(1.05); 
+}
+
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-25px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Movement B: face in and rise, played once on load */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* movement C: slow spin, used for the planets */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* HERO section */
+.hero {
+  background: radial-gradient(circle at top, #1a1a3a, var(--dark));
+}
+
+.orb {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: var(--primary);
+  filter: blur(4px);
+  opacity: 0.6;
+  animation: float 4s ease-in-out infinite; /*infinite means runs forever*/
+}
+
+.hero-content {
+  animation: fadeInUp 1s ease both;
+}
+
+/* .planet-card {
+  background-color: rgba(42, 39, 39, 0.5);
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: var(--p-3);
+  text-align: center;
+  transition:
+    transform 0.25s,
+    border-color 0.25s;
+} */
+
+.planet-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--secondary);
+  cursor: pointer;
+}
+
+/* .planet-card h3 {
+  color: var(--secondary);
+  margin: var(--m-2) 0 var(--m-1);
+} */
+
+/* .planet-card p {
+  color: #b8b8d0;
+  font-size: 14px;
+} */
+
+/* Each planet is a circle, THe spin animation makes the shading rotate slowly so the ball feels alive*/
+.planet {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  margin: 0 auto;
+  animation: spin 9s linear infinite;
+}
+
+.mercury {
+  background: radial-gradient(circle at 30% 30%, #b0b0b0, #6b6b6b);
+}
+.venus {
+  background: radial-gradient(circle at 30% 30%, #e8c07d, #a5762f);
+}
+.earth {
+  background: radial-gradient(circle at 30% 30%, #6ab7ff, #1e6b3a);
+}
+.mars {
+  background: radial-gradient(circle at 30% 30%, #ff8c66, #6b6b6b);
+}
+.jupiter {
+  background: radial-gradient(circle at 30% 30%, #e0b088, #9c6b3f);
+}
+.saturn {
+  background: radial-gradient(circle at 30% 30%, #f0d9a0, #b89b5e);
+}
+
+
+
+.bento {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 120px;
+  gap: 16px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.bento-item {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  display: grid; 
+  place-items: center;
+  padding: 16px;
+  font-weight: 600;
+  color: var(--secondary);
+  transition: background-color 0.3s;
+}
+
+.bento-item:hover {
+  background-color: rgba(108, 92, 231, 0.25);
+}
+
+
+.feature {
+  grid-column: 1/3;
+  grid-row: 1/3;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: #fff;
+  text-align: center;
+}
+
+.feature h3 {
+  margin-bottom:8px;
+}
+
+.wide {
+  grid-column: 3/5;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  gap: var(--p-2);
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.stat {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  transition: translate 0.3s;
+}
+
+.stat strong {
+  display: block;
+  font-size: 34px;
+  color: var(--accent);
+}
